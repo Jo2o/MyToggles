@@ -20,7 +20,9 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.togglz:togglz-spring-boot-starter:2.6.1.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.togglz:togglz-spring-boot-starter:2.9.8'
+    implementation 'org.togglz:togglz-console:2.9.8'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -29,3 +31,28 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+// MY GRADLE TESTS:
+// >>> gradle -q hello
+// >>> gradle tasks
+
+ext.person = 'Dolly'
+
+task hello {
+    doLast {
+        println 'Hello, ' + person + '!'
+    }
+}
+
+hello.doFirst {
+    println 'Hello, Sun!'
+}
+
+task hi {
+    doLast {
+        println 'Hi World!'
+    }
+}
+
+hello.dependsOn 'hi'
+
