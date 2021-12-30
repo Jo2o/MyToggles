@@ -1,5 +1,14 @@
 package com.example.mytoggles.togglz;
 
-public class Features {
+import org.togglz.core.Feature;
+import org.togglz.core.annotation.Label;
+
+public enum Features implements Feature {
+
+    @Label("Foo")
+    FOO,
+
+    @Label("Fee")
+    FEE,
 
 }
