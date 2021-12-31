@@ -32,27 +32,46 @@ test {
     useJUnitPlatform()
 }
 
+//------------------------------------------------------------------
 // MY GRADLE TESTS:
 // >>> gradle -q hello
-// >>> gradle tasks
+// >>> gradle tasks --all
 
 ext.person = 'Dolly'
 
 task hello {
     doLast {
-        println 'Hello, ' + person + '!'
+        println 'Hello, ' + person + '!'  + '(hello task - doLast)'
+        println "Hello2, $person! (hello task - doLast)"
     }
 }
 
 hello.doFirst {
-    println 'Hello, Sun!'
+    println 'Hello, Sun! (hello task - doFirst)'
 }
 
 task hi {
     doLast {
-        println 'Hi World!'
+        println 'Hi World! (hi task - doLast)'
     }
 }
 
 hello.dependsOn 'hi'
 
+task listJars {
+    doLast {
+        configurations.runtimeClasspath
+                .each {println it.name}
+    }
+}
+
+task listConfigurations {
+    doLast {
+        configurations.each {println it.name}
+    }
+}
+
+task copyTestRuntimeJars(type: Copy) {
+    from configurations.testRuntimeClasspath
+    into "$buildDir/jars"
+}

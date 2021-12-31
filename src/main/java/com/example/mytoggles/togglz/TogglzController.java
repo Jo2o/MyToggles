@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.togglz.core.manager.FeatureManager;
-import org.togglz.core.repository.FeatureState;
 
 @Controller
 @Slf4j
