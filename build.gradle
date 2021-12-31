@@ -75,3 +75,11 @@ task copyTestRuntimeJars(type: Copy) {
     from configurations.testRuntimeClasspath
     into "$buildDir/jars"
 }
+
+task printProperties {
+    description 'This is a description for printProperties task.'
+    println 'Task name: ' + name
+    println 'Project name: ' + project.name
+    println 'Version: ' + version
+    println 'Project version: ' + project.version
+}
